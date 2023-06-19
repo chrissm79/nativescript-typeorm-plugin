@@ -1,0 +1,55 @@
+{
+  "name": "@chrissm79/nativescript-typeorm-plugin",
+  "version": "1.0.0",
+  "description": "Add a plugin description",
+  "main": "index",
+  "typings": "index.d.ts",
+  "nativescript": {
+    "platforms": {
+      "ios": "6.0.0",
+      "android": "6.0.0"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chrissm79/nativescript-typeorm-plugin.git"
+  },
+  "keywords": [
+    "NativeScript",
+    "JavaScript",
+    "TypeScript",
+    "iOS",
+    "Android"
+  ],
+  "author": {
+    "name": "Christopher Moore",
+    "email": "oss@nativescript.org"
+  },
+  "bugs": {
+    "url": "https://github.com/chrissm79/nativescript-typeorm-plugin/issues"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/chrissm79/nativescript-typeorm-plugin",
+  "readmeFilename": "README.md",
+  "bootstrapper": "@nativescript/plugin-seed",
+  "devDependencies": {
+    "@nativescript/webpack": "^5.0.15",
+    "@types/app-root-path": "^1.2.5",
+    "@types/node": "^20.3.1",
+    "typescript": "^5.1.3"
+  },
+  "dependencies": {
+    "assert": "*",
+    "buffer": "*",
+    "events": "*",
+    "os-browserify": "*",
+    "path-browserify": "*",
+    "process": "*",
+    "reflect-metadata": "*",
+    "stream-browserify": "*",
+    "timers-browserify": "*",
+    "tty-browserify": "*",
+    "url": "*",
+    "util": "*"
+  }
+}

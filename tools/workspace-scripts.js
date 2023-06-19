@@ -55,12 +55,19 @@ module.exports = {
       },
     },
     '⚙️': {
-      script: `npx cowsay "@nativescript/* packages will keep your ⚙️ cranking"`,
-      description: '_____________  @nativescript/*  _____________',
+      script: `npx cowsay "@chrissm79/* packages will keep your ⚙️ cranking"`,
+      description: '_____________  @chrissm79/*  _____________',
     },
     // packages
     // build output is always in dist/packages
-    '@nativescript': {
+    '@chrissm79': {
+      // @chrissm79/nativescript-typeorm-plugin
+      'nativescript-typeorm-plugin': {
+        build: {
+          script: 'nx run nativescript-typeorm-plugin:build.all',
+          description: '@chrissm79/nativescript-typeorm-plugin: Build',
+        },
+      },
       'build-all': {
         script: 'nx run-many --target=build.all --all',
         description: 'Build all packages',
@@ -71,8 +78,12 @@ module.exports = {
       description: '_____________  Focus (VS Code supported)  _____________',
     },
     focus: {
+      'nativescript-typeorm-plugin': {
+        script: 'nx run nativescript-typeorm-plugin:focus',
+        description: 'Focus on @chrissm79/nativescript-typeorm-plugin',
+      },
       reset: {
-        script: 'nx g @nativescript/plugin-tools:focus-packages',
+        script: 'nx g @chrissm79/plugin-tools:focus-packages',
         description: 'Reset Focus',
       },
     },

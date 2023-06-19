@@ -5,12 +5,13 @@ import { NativeScriptRouterModule } from '@nativescript/angular';
 import { HomeComponent } from './home.component';
 
 const routes: Routes = [
-   { path: '', redirectTo: '/home', pathMatch: 'full' },
-   { path: 'home', component: HomeComponent }
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'nativescript-typeorm-plugin', loadChildren: () => import('./plugin-demos/nativescript-typeorm-plugin.module').then((m) => m.NativescriptTypeormPluginModule) },
 ];
 
 @NgModule({
-	imports: [NativeScriptRouterModule.forRoot(routes)],
-	exports: [NativeScriptRouterModule],
+  imports: [NativeScriptRouterModule.forRoot(routes)],
+  exports: [NativeScriptRouterModule],
 })
 export class AppRoutingModule {}

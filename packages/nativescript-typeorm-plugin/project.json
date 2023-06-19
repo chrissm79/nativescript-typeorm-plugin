@@ -1,0 +1,65 @@
+{
+  "name": "nativescript-typeorm-plugin",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/nativescript-typeorm-plugin",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/packages/nativescript-typeorm-plugin",
+        "tsConfig": "packages/nativescript-typeorm-plugin/tsconfig.json",
+        "packageJson": "packages/nativescript-typeorm-plugin/package.json",
+        "main": "packages/nativescript-typeorm-plugin/index.d.ts",
+        "assets": [
+          "packages/nativescript-typeorm-plugin/*.md",
+          "packages/nativescript-typeorm-plugin/index.d.ts",
+          "LICENSE",
+          {
+            "glob": "**/*",
+            "input": "packages/nativescript-typeorm-plugin/platforms/",
+            "output": "./platforms/"
+          }
+        ],
+        "dependsOn": [
+          {
+            "target": "build.all",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    },
+    "build.all": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["node tools/scripts/build-finish.ts nativescript-typeorm-plugin"],
+        "parallel": false
+      },
+      "outputs": ["dist/packages/nativescript-typeorm-plugin"],
+      "dependsOn": [
+        {
+          "target": "build.all",
+          "projects": "dependencies"
+        },
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "focus": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nx g @nativescript/plugin-tools:focus-packages nativescript-typeorm-plugin"],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/nativescript-typeorm-plugin/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

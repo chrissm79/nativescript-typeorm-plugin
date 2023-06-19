@@ -20,7 +20,9 @@
       }
     ],
     "paths": {
-      "@demo/shared": ["tools/demo/index.ts"]
+      "@demo/shared": ["tools/demo/index.ts"],
+      "@chrissm79/*": ["packages/*"],
+      "@chrissm79/nativescript-typeorm-plugin": ["packages/nativescript-typeorm-plugin/index.d.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

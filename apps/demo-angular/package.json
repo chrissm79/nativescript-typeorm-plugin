@@ -1,7 +1,9 @@
 {
   "main": "./src/main.ts",
   "dependencies": {
-    "@nativescript/core": "file:../../node_modules/@nativescript/core"
+    "@chrissm79/nativescript-typeorm-plugin": "file:../../dist/packages/nativescript-typeorm-plugin",
+    "@nativescript/core": "file:../../node_modules/@nativescript/core",
+    "typeorm": "^0.3.16"
   },
   "devDependencies": {
     "@nativescript/android": "~8.4.0",
