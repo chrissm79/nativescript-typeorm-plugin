@@ -1,4 +1,4 @@
-const { ProvidePlugin, ContextReplacementPlugin } = require('webpack');
+const { ProvidePlugin } = require('webpack');
 const fs = require('fs');
 const path = require('path');
 
@@ -9,26 +9,23 @@ const path = require('path');
  * @param {typeof import("@nativescript/webpack")} webpack
  */
 module.exports = (webpack) => {
-  console.log(':::DEBUG:::webpack');
   webpack.chainWebpack((config) => {
     config.resolve.alias.set('supports-color', 'supports-color/browser');
     config.resolve.alias.set('app-root-path', `${__dirname}/shim/app-root-path`);
-    config.resolve.alias.set('crypto', `${__dirname}/src/shim/crypto-browserify.js`);
 
     // Add fallbacks for packages that TypeORM requires to work
-    // based off webpack v5 fallbacks https://webpack.js.org/configuration/resolve/#resolvefallback
+    // based off webpack v4 fallbacks https://webpack.js.org/configuration/resolve/#resolvefallback
     const fallback = config.resolve.get('fallback');
     config.resolve.set(
       'fallback',
       webpack.Utils.merge(fallback || {}, {
-        assert: require.resolve('assert/'),
-        buffer: require.resolve('buffer/'),
-        events: require.resolve('events/'),
+        assert: require.resolve('assert'),
+        buffer: require.resolve('buffer'),
+        events: require.resolve('events'),
         timers: require.resolve('timers-browserify'),
         tty: require.resolve('tty-browserify'),
-        fs: require.resolve('@nativescript/core/'),
-        module: require.resolve('@nativescript/core/'),
-        crypto: require.resolve('@nativescript/core/'),
+        fs: require.resolve('@nativescript/core'),
+        module: require.resolve('@nativescript/core'),
         path: require.resolve('path-browserify'),
         process: require.resolve('process/browser'),
         os: require.resolve('os-browserify/browser'),
@@ -57,17 +54,9 @@ module.exports = (webpack) => {
       'sqlite3',
       'sql.js',
       'mssql',
-      '@google-cloud/spanner',
     ]);
 
-    config.plugin('ProvidePlugin|Polyfills').use(ProvidePlugin, [
-      {
-        Buffer: [require.resolve('buffer/'), 'Buffer'],
-        crypto: require.resolve(__dirname, 'src/shims/crypto-browserify.js'),
-      },
-    ]);
-
-    config.plugin('ContextReplacementPlugin').use(ContextReplacementPlugin, [/typeorm/]);
+    config.plugin('ProvidePlugin|Polyfills').use(ProvidePlugin, [{ Buffer: [require.resolve('buffer/'), 'Buffer'] }]);
 
     config.plugin('DefinePlugin').tap((args) => {
       Object.assign(args[0], {

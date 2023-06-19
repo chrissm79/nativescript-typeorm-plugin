@@ -5,5 +5,6 @@
     "rootDir": "."
   },
   "exclude": ["**/*.spec.ts", "**/*.test.ts", "angular"],
-  "include": ["**/*.ts", "references.d.ts", "nativescript.webpack.js"]
+  "include": ["**/*.ts"],
+  "files": ["shim/app-root-path.ts", "shim/crypto-browserify.js", "references.d.ts", "nativescript.webpack.js"]
 }
